@@ -1,0 +1,738 @@
+# simple old syntax
+print("20 days are " + str(50) + " minutes")
+# new syntax for string concatenation
+print(f"20 days are {50} minutes")
+
+# for mathematical operations with descriptive "variables" names: from days to seconds
+# "f" syntax is used to write in single line without using mathematical operative signs e.g "+"
+calculation_to_units = 2 * 2 * 2
+name_of_unit = "seconds"
+print(f"20 days are {20 * calculation_to_units} {name_of_unit}")
+print(f"25 days are {25 * calculation_to_units} {name_of_unit}")
+print(f"30 days are {30 * calculation_to_units} {name_of_unit}")
+print(f"35 days are {35 * calculation_to_units} {name_of_unit}")
+
+# simple syntax for mathematical operations with descriptive "variables" names: from days to hours
+calculation_to_units = 24
+name_of_unit = "hours"
+print(f"20 days are {20 * calculation_to_units} {name_of_unit}")
+print(f"25 days are {25 * calculation_to_units} {name_of_unit}")
+print(f"30 days are {30 * calculation_to_units} {name_of_unit}")
+print(f"35 days are {35 * calculation_to_units} {name_of_unit}")
+
+
+---------------------------------------------------------------------------
+# for mathematical operations with "functions: to avoid duplication of same code line" from days to hours with functions
+calculation_to_units = 24
+name_of_unit = "hours"
+
+
+# defining a function
+def days_to_units():
+    print(f"21 days are {21 * calculation_to_units} {name_of_unit}")
+# using/calling a function
+days_to_units()
+---------------------------------------------------------------------------
+
+# Using or Calling a Function
+
+calculation_to_units = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(f"{num_of_days} days are {num_of_days * calculation_to_units} {name_of_unit}")
+
+# using/calling a function with a value according to our given digit
+days_to_units(20)
+days_to_units(35)
+days_to_units(50)
+days_to_units(110)
+---------------------------------------------------------------------------
+
+
+# Using or Calling a Function, by changing the name of the variable from units to hours,
+# we only need to make change at one place and the rest will be done automatically
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# using/calling a function with a value according to our given digit
+days_to_units(20)
+days_to_units(35)
+days_to_units(50)
+days_to_units(110)
+---------------------------------------------------------------------------
+
+# Using or Calling a Function, by changing the name of the variable from units to hours,
+# we only need to make change at one place and the rest will be done automatically
+# Multiple input parameter for function
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days, custom_message):
+    print(f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit} {custom_message}")
+
+# using/calling a function with a value according to our given digit
+days_to_units(20,"good work")
+
+-------------------------------------------------------------------------
+
+
+# Using or Calling a Function, by changing the name of the variable from units to hours,
+# we only need to make change at one place and the rest will be done automatically
+# Multiple input parameter for function
+# Scope of variables in function
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+# above two variables "calculation_to_hours" + "name_of_unit" are global variables
+# all functions in the python code can use these global variables
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+# below two variables "num_of_days" + "custom_message" are local variables in the function
+# local variables can only be used within the function
+def days_to_units(num_of_days, custom_message): # function 1
+    print(f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit} {custom_message}")
+
+# using/calling a function with a value according to our given digit
+days_to_units(20,": output of function 1")
+
+
+def scope_check(num_of_days, function_name): # function 2 (local variables in function 2 don't overlap with variables in funtion 1)
+    my_var = "variable inside function" # defined variable
+    print(f"{num_of_days} {name_of_unit} {function_name}") # local internal passing variable(num_of_days, function_name)
+    print(my_var) # local internal defined variable just for example
+scope_check(23, ": output of function 2")
+
+
+-------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+user_input = input(" Hi, Please enter number of days to convert it to hours:")
+print(f" The entered value is: {user_input}")
+
+
+-------------------------------------------------------------------------
+
+# Function with return values
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return(f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+my_value = days_to_units(12)
+print(my_value)
+
+-------------------------------------------------------------------------
+
+# Input Function (Built-in-Function) to get input value from the user
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+# so that's why the input number is treated as text insted of digit value so we do Casting (casting is to change the data type to other data type)
+user_input_number = int(user_input)
+calculated_value = days_to_units(user_input_number)
+print(calculated_value)
+
+
+-------------------------------------------------------------------------
+
+ 
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(type(num_of_days > 0))
+    if num_of_days > 0: # conditional check of if and else for true and false | true and false values are represented by Boolean Data Type
+        return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+    else: # To give a feedback message to the user
+        return "There's no conversion for a negative value"
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+# so that's why the input number is treated as text insted of digit value so we do Casting (casting is to change the data type to other data type)
+calculated_value = days_to_units(int (user_input))  # It is to nest in a function call [days_to_units(int (user_input)]
+print(calculated_value)
+
+-------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for 0 and greater than zero or less than zero numbers
+# Use of multiple "If statement"
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(type(num_of_days > 0))
+    if num_of_days > 0: # conditional check of if and else for true and false | true and false values are represented by Boolean Data Type
+        return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+    elif num_of_days == 0:
+        return "You entered a zero, please enter a valid positive number"
+
+    else: # To give a feedback message to the user
+        return "There's no conversion for a negative value"
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+# so that's why the input number is treated as text insted of digit value so we do Casting (casting is to change the data type to other data type)
+calculated_value = days_to_units(int (user_input))  # It is to nest in a function call [days_to_units(int (user_input)]
+print(calculated_value)
+
+-----------------------------------------------------------------------------------------------------
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(type(num_of_days > 0))
+    if num_of_days > 0: # conditional check of if and else for true and false | true and false values are represented by Boolean Data Type
+        return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+    elif num_of_days == 0:
+        return "You entered a zero, please enter a valid positive number"
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+
+if user_input.isdigit():
+    user_input_number = int(user_input)
+    calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+    print(calculated_value)
+else:
+    print("You input is not a valid number!")
+
+
+-------------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    print(type(num_of_days > 0))
+    if num_of_days > 0: # conditional check of if and else for true and false | true and false values are represented by Boolean Data Type
+        return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+    elif num_of_days == 0:
+        return "You entered a zero, please enter a valid positive number"
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input
+    if user_input.isdigit():
+        user_input_number = int(user_input)
+        calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+        print(calculated_value)
+    else:
+        print("You input is not a valid number!")
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+validate_and_execute()
+
+
+----------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+
+# In this code we are validating all the logic of user input in the 2nd function for making the code more cleaner
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input
+    if user_input.isdigit():
+        user_input_number = int(user_input)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            return "You entered a zero, please enter a valid positive number"
+    else:
+        print("You input is not a valid number!")
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+validate_and_execute()
+
+
+--------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(user_input)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+validate_and_execute()
+
+--------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(user_input)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+# while loop to execute the set of statements as long as condition is true
+
+while True:
+    user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+    validate_and_execute()
+
+
+--------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+# While loop to stop the continues program when the user want to stop it
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(user_input)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+# while loop to exit the program when user wants to stop
+
+user_input = "" # assigning an empty string to user_input
+while user_input != "exit": # this have two things here, 1st is a conditional in a loop, 2nd is negative equal check for values
+    user_input = input("Hi, Please enter number of days to convert it to hours:") # input() function is always treated as string and not a number
+    validate_and_execute()
+
+--------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+# While loop to stop the continues program when the user want to stop it
+# List Data Type (To store multiple values in a single variable, list can have different data types)
+# Loop is executing the function with same logic mutiple times and number of times depends upon the condition
+# For Loop is used to iterating over a sequence, we can execute smth for item in a list
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(number_of_days_element)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+# while loop to exit the program when user wants to stop
+
+user_input = "" # assigning an empty string to user_input to declare and pass the user input variable in
+while user_input != "exit": # this have two things here, 1st is a conditional in a loop, 2nd is negative equal check for values
+    user_input = input("Hi, Please enter number of days as comma separated list to convert it to hours:") # input() function is always treated as string and not a number
+    print(type(user_input.split(", "))) # Space after comma will remove space in the output
+    print(user_input.split(", "))
+    for number_of_days_element in user_input.split(", "):
+       # ( "number_of_days_element" this variable is declared and its representing the elemnts in the list)
+       # As user input is always a string so a split is a function that take user input as a parameter, and will give us a list data type
+       # User can provide list of values with space between them, split have by default option for "space" but we can overwrite it with " , " as well
+        validate_and_execute()
+
+
+--------------------------------------------------------------------------------------------
+
+# Most of the time list is used in the "For Loop"
+
+my_list=["Jan", "Feb", "March"] #Creating a list
+print(my_list[2]) # Printing element from a list
+my_list.append("April") # Adding new value in the list
+print(my_list[3])
+
+--------------------------------------------------------------------------------------------
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+# While loop to stop the continues program when the user want to stop it
+# Loop is executing the function with same logic multiple times and number of times depends upon the condition
+# For Loop is used to iterating over a sequence, we can execute something for item in a list
+# Sets data type (as with lists, used to store multiple items of data, does not allow duplicate values)
+
+calculation_to_hours = 24 # defining a variable
+name_of_unit = "hours"
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days):
+    return (f"{num_of_days} days are {num_of_days * calculation_to_hours} {name_of_unit}")
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(number_of_days_element)
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number)  # It is to nest in a function call [days_to_units(int (user_input)]
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+# while loop to exit the program when user wants to stop
+
+user_input = "" # assigning an empty string to user_input to declare and pass the user input variable in
+while user_input != "exit": # this have two things here, 1st is a conditional in a loop, 2nd is negative equal check for values
+    user_input = input("Hi, Please enter number of days as comma separated list to convert it to hours:") # input() function is always treated as string and not a number
+    list_of_days = user_input.split(", ")
+    print(list_of_days)
+    print(set(list_of_days))
+    print(type(list_of_days))
+    print(type(set(list_of_days))) # the execution of program goes from inner function brackets to outer function
+
+    for number_of_days_element in set(list_of_days):
+       # ( "number_of_days_element" this variable is declared and its representing the elemnts in the list)
+       # As user input is always a string so a split is a function that take user input as a parameter, and will give us a list data type
+       # User can provide list of values with space between them, split have by default option for "space" but we can overwrite it with " , " as well
+        validate_and_execute()
+
+--------------------------------------------------------------------------------------------
+
+# Can only access the elements of a set in a loop e.g. For Loop
+# In basic set operations we can create, access only by loop, add an item, remove an items
+# Item in a set don't have a defined order, cannot be referred by index,items can't be changed, only add & remove
+
+my_set = {"Jan", "Feb", "March"} # creating a set
+for element in my_set: # for loop to access the elements of set
+    print(element)
+
+my_set.add("April") # the new added element is added randomly in set
+print(my_set)
+
+my_set.remove("Jan") # removing an element in a set
+print(my_set)
+
+my_list = ["Jan", "Feb", "March", "Jan"] # creating a list with duplicate values
+my_list.remove("Jan") # In list removes the 1st present value from the duplicate values
+print(my_list)
+
+--------------------------------------------------------------------------------------------
+
+# builtin functions
+# there are so many builtin functions, some of them are these with their syntax
+
+print("any text")
+input("enter value")
+set([1, 3, 4]) # defining a list in a set, and giving value inside a code without providing anything
+int("20")
+
+# Difference in above and below function is that functions above are called directly like that
+# but the function bellow has its own set of functions and can be executed like this
+
+list_of_days = user_input.split(", ")
+"2, 3".split() #The string here (2, 3) is going to be the parameter of the split and we can also provide an additional parameter
+# e.g. the split(", "), we were able to add a comma spce to tell the split function on which character to split the text
+
+# this is type of function called directly on a value, this could be a variable but also string representation.
+"text".isdigit() # checks if the string is representation of a digit or just a regular string
+
+# Note: each data type has its own list of functions that can be called on that data type
+# FOr demonstration lets take a list and when we enter a dot "." it gives a list of functions that can be performed e.g. remove, add,sort, copy
+[1, 3, 4].count()
+
+--------------------------------------------------------------------------------------------
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+# While loop to stop the continues program when the user want to stop it
+# Loop is executing the function with same logic multiple times and number of times depends upon the condition
+# For Loop is used to iterating over a sequence, we can execute something for item in a list
+# Sets data type (as with lists, used to store multiple items of data, does not allow duplicate values)
+# Dictionary data type (Used to store values in key:value pairs, Is a collection, which doesn't allow duplicate values)
+
+
+# defining a function parameters for passing the information in functions as parameter/arguments with input parameter
+def days_to_units(num_of_days, conversion_unit):
+    if conversion_unit == "hours":
+        return (f"{num_of_days} days are {num_of_days * 24} hours")
+    elif conversion_unit == "minutes":
+        return (f"{num_of_days} days are {num_of_days * 24 * 60} minutes")
+    else:
+        return "Unsupported unit"
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(days_and_unit_dictionary["days"])
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number, days_and_unit_dictionary["unit"])
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+# while loop to exit the program when user wants to stop
+
+user_input = "" # assigning an empty string to user_input to declare and pass the user input variable in
+while user_input != "exit": # this have two things here, 1st is a conditional in a loop, 2nd is negative equal check for values
+    user_input = input("Hi, Please enter number of days and conversion e.g. 20:hours or 10:minutes :") # input() function is always treated as string and not a number
+    days_and_unit = user_input.split(":") # split user input in two values as a list
+    print(days_and_unit)
+# {"days": 20, "unit": "hours"} # syntax of dictionary, In dictionary we have description for each of our values represented as key value pairs.
+# as this is a data type so we can create a value and assign it to a variable
+    days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
+    # in this {"days": days_and_unit[0]} getting value for days from the days_and_unit list and accessing first element of list
+    # To access the specific value in dictionary days_and_unit_dictionary["days"], we are accessing this by keyname
+    print(days_and_unit_dictionary)
+    print(type(days_and_unit_dictionary)) # to check the data type
+# So, now we have two pieces of information ["days": days_and_unit[0], "unit": days_and_unit[1]] in one variable  [days_and_unit_dictionary]
+# and we can give that variable to our function for validation
+    validate_and_execute()
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+""" The data types in python that we learn before in previous codes
+# why do we need all these data types?
+1. depending on what you try to achieve in your program
+2. you need a different data type to achieve exactly that
+
+Below are data types with their syntax:
+
+message = "enter some value" # string
+days = 20 # Integer 
+price = 9.99 # float
+valid_number = True  # boolean for condition true or not if its a valid number
+exit_input = False # boolean for condition for user input exit
+list_of_days = [20, 40, 20, 100] # List for numbers e.g. days including duplicate values
+list_of_months = ["jan", "feb", "march"] # List for string 
+set_of_days = {20, 45, 100} # set to avoid duplicate values
+days_and_unit ={"days": 10, "unit": "hours"} # dictionary is collection of key value pairs
+"""
+
+
+
+--------------------------------------------------------------------------------------------
+
+Example of modules to write code in multiple files if we are writing a complex applications with a hundred of lines of codes, we can break it into multiple file modules
+
+Code for main.py module/file::::
+
+
+# Input Function (Built-in-Function) to get input value from the user
+# To get data type and use of if else statement for float numbers and string input from user
+# Use of multiple "If statement"
+# To clean_up the code
+# Nested if_else statements
+# Error handling with try/except or try/caught by removing the user input validation statement
+# Value Error Handling, but if we remove ValueError word it will be handling all the type of errors
+# While loop to make program continue
+# While loop to stop the continues program when the user want to stop it
+# Loop is executing the function with same logic multiple times and number of times depends upon the condition
+# For Loop is used to iterating over a sequence, we can execute something for item in a list
+# Sets data type (as with lists, used to store multiple items of data, does not allow duplicate values)
+# Dictionary data type (Used to store values in key:value pairs, Is a collection, which doesn't allow duplicate values)
+# Modules (Note: Logically organize the Python code, Module should contain related code)
+# Module is a python file that contain function and variables that can be used in another python file, and we can reference one module in other
+
+# To import the whole module
+
+import helper # defining in this main.py file module there is a module named helper.py and we are importing the whole module named helper
+user_input = "" # assigning an empty string to user_input to declare and pass the user input variable in
+# while loop to exit the program when user wants to stop
+while user_input != "exit": # this have two things here, 1st is a conditional in a loop, 2nd is negative equal check for values
+    user_input = input("Hi, Please enter number of days and conversion e.g. 20:hours or 10:minutes :") # input() function is always treated as string and not a number
+    days_and_unit = user_input.split(":") # split user input in two values as a list
+    print(days_and_unit)
+# {"days": 20, "unit": "hours"} # syntax of dictionary, In dictionary we have description for each of our values represented as key value pairs.
+# as this is a data type so we can create a value and assign it to a variable
+    days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
+    # in this {"days": days_and_unit[0]} getting value for days from the days_and_unit list and accessing first element of list
+    # To access the specific value in dictionary days_and_unit_dictionary["days"], we are accessing this by keyname
+# So, now we have two pieces of information ["days": days_and_unit[0], "unit": days_and_unit[1]] in one variable  [days_and_unit_dictionary]
+# and we can give that variable to our function for validation
+    helper.validate_and_execute(days_and_unit_dictionary)
+    # In order to make this dictionary available in validate and execute function we are passing it as a variable in validate_and_execute function call
+    # and also in function named validate_and_execute in the helper file module
+    # Note that in main.py module file we only need the validate and execute function we don't need the days and units function
+    # as this function is only used in the validate and execute function
+
+
+Code for helper.py module/file: (Note: heleper.py is the file name)::::
+
+
+def days_to_units(num_of_days, conversion_unit):
+    if conversion_unit == "hours":
+        return (f"{num_of_days} days are {num_of_days * 24} hours")
+    elif conversion_unit == "minutes":
+        return (f"{num_of_days} days are {num_of_days * 24 * 60} minutes")
+    else:
+        return "Unsupported unit"
+
+# To clean_up the code for best practice in functions
+def validate_and_execute(days_and_unit_dictionary): # function to validate the user input by try and except block to handle multiple errors
+
+    try:
+        user_input_number = int(days_and_unit_dictionary["days"])
+        if user_input_number > 0:
+          calculated_value = days_to_units(user_input_number, days_and_unit_dictionary["unit"])
+          print(calculated_value)
+        elif user_input_number == 0:
+            print ("You entered a zero, please enter a valid positive number")
+        else:
+            print("You entered a negative number, please enter a valid positive number")
+    except ValueError:
+        print("Your input is not a valid number!")
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+
+
